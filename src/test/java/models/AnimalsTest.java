@@ -27,6 +27,6 @@ public class AnimalsTest {
     public void equals_returnsTrueIfNameIsSame() {
         Animals animal = new Animals("dog");
         Animals anotherAnimal = new Animals("horse");
-        assertTrue(animal.equals(anotherAnimal));
+        assertEquals(animal, anotherAnimal);
     }
 }
