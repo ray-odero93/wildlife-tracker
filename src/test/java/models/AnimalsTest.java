@@ -20,13 +20,13 @@ public class AnimalsTest {
     @Test
     public void animals_instantiatesWithCorrectId_integer() {
         Animals animal = new Animals("dog");
-        assertEquals(1, animal.getId());
+        assertEquals(0, animal.getId());
     }
 
     @Test
-    public void equals_returnsTrueIfNameIsSame() {
+    public void equals_returnsTrueIfNameIsSame_false() {
         Animals animal = new Animals("dog");
-        Animals anotherAnimal = new Animals("horse");
+        Animals anotherAnimal = new Animals("dog");
         assertEquals(animal, anotherAnimal);
     }
 }
