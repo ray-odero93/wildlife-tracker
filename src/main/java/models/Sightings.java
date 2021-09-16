@@ -10,5 +10,6 @@ public class Sightings {
         this.animalId = animalId;
         this.location = location;
         this.rangerName = rangerName;
+        this.id = id;
     }
 }
