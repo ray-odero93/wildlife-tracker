@@ -17,4 +17,10 @@ public class AnimalsTest {
         Animals animal = new Animals("dog", 1);
         assertEquals("dog", animal.getName());
     }
+
+    @Test
+    public void animals_instantiatesWithCorrectId_integer() {
+        Animals animal = new Animals("dog", 1);
+        assertEquals(1, animal.getId());
+    }
 }
