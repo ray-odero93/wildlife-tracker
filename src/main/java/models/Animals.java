@@ -1,19 +1,28 @@
 package models;
 
 public class Animals {
-    private int animalId;
-    private String animalName;
+    private int id;
+    private String name;
 
-    public Animals(String animalName, int animalId) {
-        this.animalName = animalName;
-        this.animalId = animalId;
+    public Animals(String name) {
+        this.name = name;
     }
 
     public String getName() {
-        return animalName;
+        return name;
     }
 
     public int getId() {
-        return animalId;
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object animal) {
+        if (!(animal instanceof Animals)) {
+            return false;
+        } else {
+            Animals anotherAnimal = (Animals) animal;
+            return this.getName().equals(anotherAnimal.getName());
+        }
     }
 }
