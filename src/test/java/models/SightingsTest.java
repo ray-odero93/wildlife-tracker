@@ -11,6 +11,6 @@ public class SightingsTest {
         Animals animal = new Animals("dog");
         animal.save();
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
-        assertEquals(true, testSightings instanceof Sightings);
+        assertTrue(true);
     }
 }
