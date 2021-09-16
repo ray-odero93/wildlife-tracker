@@ -8,4 +8,10 @@ public class Animals {
         this.animalName = animalName;
         this.animalId = animalId;
     }
+
+    public String getName() {
+        return animalName;
+    }
+
+
 }
