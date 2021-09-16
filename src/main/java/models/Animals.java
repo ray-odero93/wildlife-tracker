@@ -13,5 +13,7 @@ public class Animals {
         return animalName;
     }
 
-
+    public int getId() {
+        return animalId;
+    }
 }
