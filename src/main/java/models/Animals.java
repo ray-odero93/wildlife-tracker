@@ -1,6 +1,11 @@
 package models;
 
 public class Animals {
-    private int id;
-    private name;
+    private int animalId;
+    private String animalName;
+
+    public Animals(String animalName, int animalId) {
+        this.animalName = animalName;
+        this.animalId = animalId;
+    }
 }
