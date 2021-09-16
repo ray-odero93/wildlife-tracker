@@ -17,4 +17,10 @@ public class EndangeredAnimalsTest {
         EndangeredAnimals testAnimal = new EndangeredAnimals("Jackal", "Healthy", "Young");
         assertEquals("Healthy", testAnimal.getHealth());
     }
+
+    @Test
+    public void getName_returnsNameAttribute_true() {
+        EndangeredAnimals testAnimal = new EndangeredAnimals("Jackal", "Healthy", "Young");
+        assertEquals("Jackal", testAnimal.getName());
+    }
 }
