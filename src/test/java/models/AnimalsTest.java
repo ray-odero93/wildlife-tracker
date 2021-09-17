@@ -72,4 +72,9 @@ public class AnimalsTest {
         animal.deleteInstance();
         assertEquals(0, Animals.getAllAnim().size());
     }
+
+    @Test
+    public void returnsNullWhenNoAnimals_null() {
+        assertTrue(Animals.findById(999) == null);
+    }
 }
