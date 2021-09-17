@@ -29,4 +29,22 @@ public class AnimalsTest {
         Animals anotherAnimal = new Animals("dog");
         assertEquals(animal, anotherAnimal);
     }
+
+    @Test
+    public void save_assignsIdAndSavesObject() {
+        Animals testAnimal = new Animals("dog");
+        testAnimal.save();
+        Animals savedAnimal = Animals.getAllAnim().get(0);
+        assertEquals(testAnimal.getId(), savedAnimal.getId());
+    }
+
+    @Test
+    public void getAllInstances_returnsAllInstancesOfAnimals_true() throws Exception {
+        Animals animal = new Animals("gazelle");
+        animal.save();
+        Animals anotherAnimal = new Animals("leopard");
+        animal.save();
+        assertEquals(true, Animals.getAllAnim().get(0).equals(animal));
+        assertEquals(true, Animals.getAllAnim().get(1).equals(anotherAnimal));
+    }
 }
