@@ -44,7 +44,7 @@ public class AnimalsTest {
         animal.save();
         Animals anotherAnimal = new Animals("leopard");
         animal.save();
-        assertEquals(true, Animals.getAllAnim().get(0).equals(animal));
-        assertEquals(true, Animals.getAllAnim().get(1).equals(anotherAnimal));
+        assertEquals(Animals.getAllAnim().get(0), animal);
+        assertEquals(Animals.getAllAnim().get(1), anotherAnimal);
     }
 }
