@@ -13,14 +13,6 @@ public class Animals {
         this.id = id;
     }
 
-    public static List<Animals> getAllAnim() {
-        try(Connection conn = DB.sql2o.open()) {
-            String sql = "SELECT * FROM animals;";
-            return conn.createQuery(sql)
-                    .executeAndFetch(Animals.class);
-        }
-    }
-
     public String getName() {
         return name;
     }
@@ -46,6 +38,24 @@ public class Animals {
                     .addParameter("name", this.name)
                     .executeUpdate()
                     .getKey();
+        }
+    }
+
+    public static List<Animals> getAllAnim() {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM animals;";
+            return conn.createQuery(sql)
+                    .executeAndFetch(Animals.class);
+        }
+    }
+
+    public static Object findById(int id) {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM animals WHERE id=:id;";
+            Animals animal = conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Animals.class);
+            return animal;
         }
     }
 
