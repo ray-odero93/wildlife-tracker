@@ -15,14 +15,10 @@ public class Animals {
 
     public static List<Animals> getAllAnim() {
         try(Connection conn = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name) VALUES (:name);";
+            String sql = "SELECT * FROM animals;";
             return conn.createQuery(sql)
                     .executeAndFetch(Animals.class);
         }
-    }
-
-    public static Animals findById(int id) {
-        return null;
     }
 
     public String getName() {
