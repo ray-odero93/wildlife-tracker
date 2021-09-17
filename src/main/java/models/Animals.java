@@ -14,7 +14,11 @@ public class Animals {
     }
 
     public static List<Animals> getAllAnim() {
-        return instances;
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name) VALUES (:name);";
+            return conn.createQuery(sql)
+                    .executeAndFetch(Animals.class);
+        }
     }
 
     public static Animals findById(int id) {
@@ -42,7 +46,7 @@ public class Animals {
     public void save() {
         try (Connection conn = DB.sql2o.open()) {
             String sql = "INSERT INTO animals (name) VALUES (:name);";
-            this.id = (int) con.createQuery(sql, true)
+            this.id = (int) conn.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .executeUpdate()
                     .getKey();
