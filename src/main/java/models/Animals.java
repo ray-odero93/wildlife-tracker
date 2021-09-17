@@ -52,15 +52,20 @@ public class Animals {
     public static Object findById(int id) {
         try(Connection conn = DB.sql2o.open()) {
             String sql = "SELECT * FROM animals WHERE id=:id;";
-            Animals animal = conn.createQuery(sql)
+            return conn.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Animals.class);
-            return animal;
         }
     }
 
-    public void updateName(String jackal) {
-
+    public void updateName(String name) {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "UPDATE animals SET name=:name WHERE id=:id;";
+            conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .addParameter("name", name)
+                    .executeUpdate();
+        }
     }
 
     public void deleteInstance() {
