@@ -80,10 +80,9 @@ public class Animals {
     public List<Sightings> getSightings() {
         try (Connection conn = DB.sql2o.open()) {
             String sql = "SELECT * FROM sightings WHERE animalId=:id;";
-            List<Sightings> sightings = conn.createQuery(sql)
+            return conn.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetch(Sightings.class);
-            return sightings;
         }
     }
 }
