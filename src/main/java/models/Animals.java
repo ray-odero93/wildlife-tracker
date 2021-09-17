@@ -1,8 +1,10 @@
 package models;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class Animals {
+    private static List<Animals> instances;
     private int id;
     private String name;
 
@@ -11,9 +13,13 @@ public class Animals {
         this.id = id;
     }
 
-//    public static List<Object> getAllAnim() {
-//        return null;
-//    }
+    public static List<Animals> getAllAnim() {
+        return instances;
+    }
+
+    public static Animals findById(int id) {
+        return null;
+    }
 
     public String getName() {
         return name;
@@ -33,6 +39,20 @@ public class Animals {
         }
     }
 
-//    public void save() {
-//    }
+    public void save() {
+        try (Connection conn = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name) VALUES (:name);";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+    public void updateName(String jackal) {
+
+    }
+
+    public void deleteInstance() {
+    }
 }
