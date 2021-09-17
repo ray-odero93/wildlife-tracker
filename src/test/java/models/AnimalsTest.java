@@ -64,4 +64,12 @@ public class AnimalsTest {
         animal.updateName("jackal");
         assertEquals("jackal", animal.getName());
     }
+
+    @Test
+    public void deletesAnimalsInstances_0() {
+        Animals animal = new Animals("bear");
+        animal.save();
+        animal.deleteInstance();
+        assertEquals(0, Animals.getAllAnim().size());
+    }
 }
