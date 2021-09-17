@@ -21,4 +21,12 @@ public class SightingsTest {
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
         assertEquals("Zone D", testSightings.getLocation());
     }
+
+    @Test
+    public void getRanger_instantiatesWithCorrectRangerName_string() throws Exception {
+        Animals animal = new Animals("dog");
+        animal.save();
+        Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
+        assertEquals("John", testSightings.getRanger());
+    }
 }
