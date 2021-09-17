@@ -39,12 +39,21 @@ public class AnimalsTest {
     }
 
     @Test
-    public void getAllInstances_returnsAllInstancesOfAnimals_true() throws Exception {
+    public void getAllInstances_returnsAllInstancesOfAnimals_true() {
         Animals animal = new Animals("gazelle");
         animal.save();
         Animals anotherAnimal = new Animals("leopard");
         anotherAnimal.save();
         assertEquals(Animals.getAllAnim().get(0), animal);
         assertEquals(Animals.getAllAnim().get(1), anotherAnimal);
+    }
+
+    @Test
+    public void returnsAnimalWithSameId_anotherAnimal() {
+        Animals animal = new Animals("antelope");
+        animal.save();
+        Animals anotherAnimal = new Animals("springbok");
+        anotherAnimal.save();
+        assertEquals(Animals.findById(anotherAnimal.getId()), anotherAnimal);
     }
 }
