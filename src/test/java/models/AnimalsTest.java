@@ -56,4 +56,12 @@ public class AnimalsTest {
         anotherAnimal.save();
         assertEquals(Animals.findById(anotherAnimal.getId()), anotherAnimal);
     }
+
+    @Test
+    public void updatesAnimalName_string() {
+        Animals animal = new Animals("wolf");
+        animal.save();
+        animal.updateName("jackal");
+        assertEquals("jackal", animal.getName());
+    }
 }
