@@ -12,4 +12,8 @@ public class Sightings {
         this.rangerName = rangerName;
         this.id = id;
     }
+
+    public String getLocation() {
+        return location;
+    }
 }
