@@ -75,6 +75,6 @@ public class AnimalsTest {
 
     @Test
     public void returnsNullWhenNoAnimals_null() {
-        assertTrue(Animals.findById(999) == null);
+        assertNull(Animals.findById(999));
     }
 }
