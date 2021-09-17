@@ -29,4 +29,12 @@ public class SightingsTest {
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
         assertEquals("John", testSightings.getRanger());
     }
+
+    @Test
+    public void getId_instantiatesWithCorrectId_integer() throws Exception {
+        Animals animal = new Animals("dog");
+        animal.save();
+        Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
+        assertEquals("1", testSightings.getId());
+    }
 }
