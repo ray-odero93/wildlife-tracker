@@ -20,4 +20,8 @@ public class Sightings {
     public String getRanger() {
         return rangerName;
     }
+
+    public int getId() {
+        return id;
+    }
 }
