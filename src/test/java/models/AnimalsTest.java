@@ -43,7 +43,7 @@ public class AnimalsTest {
         Animals animal = new Animals("gazelle");
         animal.save();
         Animals anotherAnimal = new Animals("leopard");
-        animal.save();
+        anotherAnimal.save();
         assertEquals(Animals.getAllAnim().get(0), animal);
         assertEquals(Animals.getAllAnim().get(1), anotherAnimal);
     }
