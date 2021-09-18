@@ -15,7 +15,7 @@ public class SightingsTest {
     }
 
     @Test
-    public void getLocation_instantiatesWithCorrectLocation_string() throws Exception {
+    public void getLocation_instantiatesWithCorrectLocation_string() {
         Animals animal = new Animals("dog");
         animal.save();
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
@@ -23,7 +23,7 @@ public class SightingsTest {
     }
 
     @Test
-    public void getRanger_instantiatesWithCorrectRangerName_string() throws Exception {
+    public void getRanger_instantiatesWithCorrectRangerName_string() {
         Animals animal = new Animals("dog");
         animal.save();
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
@@ -31,10 +31,10 @@ public class SightingsTest {
     }
 
     @Test
-    public void getId_instantiatesWithCorrectId_integer() throws Exception {
+    public void getId_instantiatesWithCorrectId_integer() {
         Animals animal = new Animals("dog");
         animal.save();
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
-        assertEquals("1", testSightings.getId());
+        assertEquals(1, testSightings.getId());
     }
 }
