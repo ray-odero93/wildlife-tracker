@@ -19,6 +19,16 @@ public class EndangeredAnimals {
         this.id = id;
     }
 
+    public static EndangeredAnimals findById(int id) {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM endangeredAnimals WHERE id=:id;";
+            EndangeredAnimals animal = conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(EndangeredAnimals.class);
+            return animal;
+        }
+    }
+
     public String getHealth() {
         return health;
     }
