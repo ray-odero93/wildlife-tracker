@@ -19,16 +19,6 @@ public class EndangeredAnimals {
         this.id = id;
     }
 
-    public static EndangeredAnimals findById(int id) {
-        try(Connection conn = DB.sql2o.open()) {
-            String sql = "SELECT * FROM endangeredAnimals WHERE id=:id;";
-            EndangeredAnimals animal = conn.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(EndangeredAnimals.class);
-            return animal;
-        }
-    }
-
     public String getHealth() {
         return health;
     }
@@ -83,6 +73,24 @@ public class EndangeredAnimals {
                     .addParameter("id", id)
                     .addParameter("health", health)
                     .executeUpdate();
+        }
+    }
+
+    public static EndangeredAnimals findById(int id) {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM endangeredAnimals WHERE id=:id;";
+            return conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(EndangeredAnimals.class);
+        }
+    }
+
+    public List<Sightings> getSightings() {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings WHERE animal_id=:id;";
+            return conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetch(Sightings.class);
         }
     }
 }
