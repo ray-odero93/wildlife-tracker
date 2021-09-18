@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,11 @@ public class EndangeredAnimals {
     }
 
     public static List<EndangeredAnimals> getAllInstances() {
-        return instances;
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM endangeredAnimals;";
+            return conn.createQuery(sql)
+                    .executeAndFetch(EndangeredAnimals.class);
+        }
     }
 
     public String getHealth() {
@@ -40,5 +45,6 @@ public class EndangeredAnimals {
     }
 
     public void save() {
+
     }
 }
