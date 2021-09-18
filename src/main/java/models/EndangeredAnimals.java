@@ -1,6 +1,10 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EndangeredAnimals {
+    private static List<EndangeredAnimals> instances = new ArrayList<>();
     private int id;
     private String name;
     private String health;
@@ -14,6 +18,10 @@ public class EndangeredAnimals {
         this.id = id;
     }
 
+    public static List<EndangeredAnimals> getAllInstances() {
+        return instances;
+    }
+
     public String getHealth() {
         return health;
     }
@@ -24,5 +32,13 @@ public class EndangeredAnimals {
 
     public String getAge() {
         return age;
+    }
+
+
+    public int getId() {
+        return 0;
+    }
+
+    public void save() {
     }
 }
