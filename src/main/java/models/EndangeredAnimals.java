@@ -19,14 +19,6 @@ public class EndangeredAnimals {
         this.id = id;
     }
 
-    public static List<EndangeredAnimals> getAllInstances() {
-        try(Connection conn = DB.sql2o.open()) {
-            String sql = "SELECT * FROM endangeredAnimals;";
-            return conn.createQuery(sql)
-                    .executeAndFetch(EndangeredAnimals.class);
-        }
-    }
-
     public String getHealth() {
         return health;
     }
@@ -41,7 +33,15 @@ public class EndangeredAnimals {
 
 
     public int getId() {
-        return 0;
+        return id;
+    }
+
+    public static List<EndangeredAnimals> getAllInstances() {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "SELECT * FROM endangeredAnimals;";
+            return conn.createQuery(sql)
+                    .executeAndFetch(EndangeredAnimals.class);
+        }
     }
 
     public void save() {
