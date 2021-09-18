@@ -23,4 +23,53 @@ public class EndangeredAnimalsTest {
         EndangeredAnimals testAnimal = new EndangeredAnimals("Jackal", "Healthy", "Young");
         assertEquals("Jackal", testAnimal.getName());
     }
+
+    @Test
+    public void getAge_returnsAgeAttribute_true() {
+        EndangeredAnimals animal = new EndangeredAnimals("gemsbok", "okay", "adolescent");
+        assertEquals("adolescent", animal.getAge());
+    }
+
+    @Test
+    public void save_assignsIdAndSavesInstances() {
+        EndangeredAnimals animal = new EndangeredAnimals("gemsbok", "okay", "adolescent");
+        animal.save();
+        EndangeredAnimals savedAnimal = EndangeredAnimals.getAllInstances().get(0);
+        assertEquals(animal.getId(), savedAnimal.getId());
+    }
+
+    @Test
+    public void returnsAllInstancesOfEndangeredAnimals() {
+        EndangeredAnimals animal = new EndangeredAnimals("black panther", "okay", "adult");
+        animal.save();
+        EndangeredAnimals anotherAnimal = new EndangeredAnimals("rhino", "sickly", "adult");
+        anotherAnimal.save();
+        assertEquals(EndangeredAnimals.getAllInstances().get(0), animal);
+        assertEquals(EndangeredAnimals.getAllInstances().get(1), anotherAnimal);
+    }
+
+    @Test
+    public void returnsAnimalsWithSimilarId() {
+        EndangeredAnimals animal = new EndangeredAnimals("black panther", "okay", "adult");
+        animal.save();
+        EndangeredAnimals anotherAnimal = new EndangeredAnimals("rhino", "sickly", "adult");
+        anotherAnimal.save();
+        assertEquals("black panther", EndangeredAnimals.findById(animal.getId()).getName());
+    }
+
+    @Test
+    public void updatesHealthAttribute_true() {
+        EndangeredAnimals animal = new EndangeredAnimals("tiger", "okay", "young");
+        animal.save();
+        animal.updateHealth("sick");
+        assertEquals("sick", EndangeredAnimals.findById(animal.getId()).getHealth());
+    }
+
+    @Test
+    public void updatesAgeAttribute_true() {
+        EndangeredAnimals animal = new EndangeredAnimals("elephant", "okay", "adult");
+        animal.save();
+        animal.updateAge("adolescent");
+        assertEquals("adolescents", EndangeredAnimals.findById(animal.getId()).getAge());
+    }
 }
