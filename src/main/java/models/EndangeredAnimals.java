@@ -64,5 +64,15 @@ public class EndangeredAnimals {
                     .addParameter("age",age)
                     .executeUpdate();
         }
+    }
+
+    public void updateHealth(String health) {
+        try(Connection conn = DB.sql2o.open()) {
+            String sql = "UPDATE endangeredAnimals SET health=:health WHERE id=:id;";
+            conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .addParameter("health", health)
+                    .executeUpdate();
         }
+    }
 }
