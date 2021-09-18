@@ -29,4 +29,12 @@ public class EndangeredAnimalsTest {
         EndangeredAnimals animal = new EndangeredAnimals("gemsbok", "okay", "adolescent");
         assertEquals("adolescent", animal.getAge());
     }
+
+    @Test
+    public void save_assignsIdAndSavesInstances() {
+        EndangeredAnimals animal = new EndangeredAnimals("gemsbok", "okay", "adolescent");
+        animal.save();
+        EndangeredAnimals savedAnimal = EndangeredAnimals.getAllInstances().get(0);
+        assertEquals(animal.getId(), savedAnimal.getId());
+    }
 }
