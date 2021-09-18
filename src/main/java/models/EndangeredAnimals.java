@@ -21,4 +21,8 @@ public class EndangeredAnimals {
     public String getName() {
         return name;
     }
+
+    public String getAge() {
+        return age;
+    }
 }
