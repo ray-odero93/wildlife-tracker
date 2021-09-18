@@ -37,4 +37,14 @@ public class EndangeredAnimalsTest {
         EndangeredAnimals savedAnimal = EndangeredAnimals.getAllInstances().get(0);
         assertEquals(animal.getId(), savedAnimal.getId());
     }
+
+    @Test
+    public void returnsAllInstancesOfEndangeredAnimals() {
+        EndangeredAnimals animal = new EndangeredAnimals("black panther", "okay", "adult");
+        animal.save();
+        EndangeredAnimals anotherAnimal = new EndangeredAnimals("rhino", "sickly", "adult");
+        anotherAnimal.save();
+        assertEquals(true, EndangeredAnimals.getAllInstances().get(0)equals(animal.getId()));
+        assertEquals(true, EndangeredAnimals.getAllInstances().get(1)equals(anotherAnimal.getId()));
+    }
 }
