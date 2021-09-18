@@ -29,4 +29,52 @@ public class AnimalsTest {
         Animals anotherAnimal = new Animals("dog");
         assertEquals(animal, anotherAnimal);
     }
+
+    @Test
+    public void save_assignsIdAndSavesObject() {
+        Animals testAnimal = new Animals("dog");
+        testAnimal.save();
+        Animals savedAnimal = Animals.getAllAnim().get(0);
+        assertEquals(testAnimal.getId(), savedAnimal.getId());
+    }
+
+    @Test
+    public void getAllInstances_returnsAllInstancesOfAnimals_true() {
+        Animals animal = new Animals("gazelle");
+        animal.save();
+        Animals anotherAnimal = new Animals("leopard");
+        anotherAnimal.save();
+        assertEquals(Animals.getAllAnim().get(0), animal);
+        assertEquals(Animals.getAllAnim().get(1), anotherAnimal);
+    }
+
+    @Test
+    public void returnsAnimalWithSameId_anotherAnimal() {
+        Animals animal = new Animals("antelope");
+        animal.save();
+        Animals anotherAnimal = new Animals("springbok");
+        anotherAnimal.save();
+        assertEquals(Animals.findById(anotherAnimal.getId()), anotherAnimal);
+    }
+
+    @Test
+    public void updatesAnimalName_string() {
+        Animals animal = new Animals("wolf");
+        animal.save();
+        animal.updateName("jackal");
+        assertEquals("jackal", animal.getName());
+    }
+
+    @Test
+    public void deletesAnimalsInstances_0() {
+        Animals animal = new Animals("bear");
+        animal.save();
+        animal.deleteInstance();
+        assertEquals(0, Animals.getAllAnim().size());
+    }
+
+    @Test
+    public void returnsNullWhenNoAnimals_null() {
+        assertNull(Animals.findById(999));
+    }
 }

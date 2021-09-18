@@ -35,6 +35,6 @@ public class SightingsTest {
         Animals animal = new Animals("dog");
         animal.save();
         Sightings testSightings = new Sightings(animal.getId(), "Zone D", "John");
-        assertEquals(1, testSightings.getId());
+        assertEquals(0, testSightings.getId());
     }
 }
